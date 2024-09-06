@@ -1,4 +1,6 @@
-matplotlib
-numpy
+numpy<2.0
 pandas
-yfinance
+yfinance~=0.2.43
+keras~=3.5.0
+streamlit~=1.37.1
+scikit-learn~=1.5.1
