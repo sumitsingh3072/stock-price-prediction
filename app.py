@@ -1,11 +1,13 @@
 import numpy as np
 import pandas as pd
 import yfinance as yf
-from keras.models import load_model
+import tensorflow as tf
+from tensorflow import keras
+#from keras import load_model
 from sklearn.preprocessing import MinMaxScaler
 import streamlit as st
 #load Model 
-model = load_model('Bitcoin_Price_prediction_Model.keras')
+model = loaded_model = keras.models.load_model('Bitcoin_Price_prediction_Model.keras')
 
 st.header('Bitcoin Price Prediction Model')
 st.subheader('Bitcoin Price Data')
