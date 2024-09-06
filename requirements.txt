@@ -1,5 +1,6 @@
 numpy<2.0
 pandas
+tensorflow
 yfinance~=0.2.43
 keras~=3.5.0
 streamlit~=1.37.1
