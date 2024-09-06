@@ -1,9 +1,7 @@
 import numpy as np
 import pandas as pd
 import yfinance as yf
-import tensorflow as tf
-from tensorflow import keras
-#from keras import load_model
+import keras
 from sklearn.preprocessing import MinMaxScaler
 import streamlit as st
 #load Model 
