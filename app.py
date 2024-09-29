@@ -14,7 +14,7 @@ model = loading()
 
 st.header('Bitcoin Price Prediction Model')
 st.subheader('Bitcoin Price Data')
-@st.cache_resource
+
 def load_data():
     end_date = datetime.now() - timedelta(days=1)  # Yesterday's date
     start_date = end_date - timedelta(days=365*10)  # 10 years back
