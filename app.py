@@ -4,13 +4,29 @@ import yfinance as yf
 import keras
 from sklearn.preprocessing import MinMaxScaler
 import streamlit as st
+from datetime import datetime, timedelta
 #load Model 
-model = loaded_model = keras.models.load_model('Bitcoin_Price_prediction_Model.keras')
+@st.cache_resource
+def loading():
+    model = keras.models.load_model('Bitcoin_Price_prediction_Model.keras')
+    return model
+model = loading()
 
 st.header('Bitcoin Price Prediction Model')
 st.subheader('Bitcoin Price Data')
-data = pd.DataFrame(yf.download('BTC-USD','2014-01-01','2024-08-24'))
-data = data.reset_index()
+@st.cache_resource
+def load_data():
+    end_date = datetime.now() - timedelta(days=1)  # Yesterday's date
+    start_date = end_date - timedelta(days=365*10)  # 10 years back
+
+    # Convert to string in the required format
+    start_date_str = start_date.strftime('%Y-%m-%d')
+    end_date_str = end_date.strftime('%Y-%m-%d')
+    # Download the data
+    data = pd.DataFrame(yf.download('BTC-USD', start=start_date_str, end=end_date_str))
+    data = data.reset_index()
+    return data
+data = load_data()
 st.write(data)
 
 st.subheader('Bitcoin Line Chart')
